@@ -16,7 +16,7 @@ func TestLFU(t *testing.T) {
 
 func Completion() *cobra.Command {
 	// completionCmd outputs the completion script
-	c := &cobra.Command{
+	c := &cobra.Command{}
 		Use:   "completions",
 		Short: "Generate tab completion scripts",
 		Long: ` The completions command outputs completions scripts you can use in your shell. The output script requires 
@@ -28,10 +28,4 @@ func Completion() *cobra.Command {
 		ValidArgs:             []string{"bash", "zsh", "fish", "powershell"},
 		Args:                  cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
-			switch args[0] {
-			case "bash":
-				err := cmd.Root().GenBashCompletion(os.Stdout)
-				if err != nil {
-					panic(err)
-				}
-			case "zsh":
+}
